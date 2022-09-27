@@ -4,7 +4,6 @@
              xmlns:local="clr-namespace:PaintPatterns"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-
         <Style TargetType="Button" x:Key="btnBlue">
             <Setter Property="Background" Value="#fff"/>
             <Setter Property="Foreground" Value="#000"/>
@@ -117,6 +116,6 @@ BorderBrush="#000">
                     <Setter Property="Foreground" Value="#fff"/>
                 </Trigger>
             </Style.Triggers>
-        </Style>
+        </Style>    
     </Application.Resources>
 </Application>
