@@ -1,15 +1,15 @@
-﻿<Window x:Class="DesignPatterns.MainWindow"
+﻿<Window x:Class="PaintPatterns.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DesignPatterns"
+        xmlns:local="clr-namespace:PaintPatterns"
         mc:Ignorable="d"
         Title="MainWindow" Height="520" Width="800" MinHeight="520" MinWidth="800"
         MouseUp="Window_MouseUp">
     <Grid Background="AliceBlue">
-        <Canvas Width="{Binding ElementName=MainWin, Path=ActualWidth}"
-                Height="{Binding ElementName=MainWin, Path=ActualHeight}" Background="White" Margin="10,10,87,10" Name="Canvas" MouseMove="Canvas_MouseMove"  MouseDown="Canvas_MouseDown">
+        <Canvas Width="{Binding ElementName=MainWindow, Path=ActualWidth}"
+                Height="{Binding ElementName=MainWindow, Path=ActualHeight}" Background="White" Margin="10,10,87,10" Name="Canvas" MouseMove="Canvas_MouseMove"  MouseDown="Canvas_MouseDown">
 
         </Canvas>
         <Button Width="70" Height="50"  Name="SelectBtn" Content="Select" Click="SelectBtn_Click"
