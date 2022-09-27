@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PaintPatterns
+namespace DesignPatterns
 {
     public partial class MainWindow : Window
     {
@@ -226,7 +226,7 @@ namespace PaintPatterns
                     Height = height,
                     Stroke = Brushes.Black,
                     StrokeThickness = 2,
-                    Fill=randColor()
+                    Fill = randColor()
                 };
 
                 cv.Children.Add(ellipse);

@@ -1,7 +1,7 @@
-﻿<Application x:Class="PaintPatterns.App"
+﻿<Application x:Class="DesignPatterns.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:PaintPatterns"
+             xmlns:local="clr-namespace:DesignPatterns"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
 
