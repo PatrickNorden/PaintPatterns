@@ -1,4 +1,0 @@
-group 3
-    ellipse 251 139 87 77
-    ellipse 536 112 69 77
-    rectangle 296 230 201 70
