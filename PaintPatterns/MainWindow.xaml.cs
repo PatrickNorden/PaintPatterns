@@ -1,19 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PaintPatterns
@@ -24,6 +15,7 @@ namespace PaintPatterns
         public Point InitialPosition;
         public Point SelectPos;
         private bool mouseButtonHeld;
+        private readonly CommandInvoker invoker;
 
         UIElement selectedElement = null;
         Shape selectedShape;
@@ -34,10 +26,11 @@ namespace PaintPatterns
 
         public MainWindow()
         {
-            InitializeComponent();
-            SelectBtn.IsEnabled = false;
+            invoker = CommandInvoker.GetInstance();
+            invoker.MainWindow = this;
         }
 
+        #region Toolbar Button handling
         private void SelectBtn_Click(object sender, RoutedEventArgs e)
         {
             shape = "none";
@@ -45,16 +38,16 @@ namespace PaintPatterns
             RectangleBtn.IsEnabled = true;
             EllipseBtn.IsEnabled = true;
         }
+        private void ClearBtn_Click(object sender, RoutedEventArgs e)
+        {
+            invoker.Clear();
+        }
         private void RectangleBtn_Click(object sender, RoutedEventArgs e)
         {
             shape = "rectangle";
             SelectBtn.IsEnabled = true;
             RectangleBtn.IsEnabled = false;
             EllipseBtn.IsEnabled = true;
-        }
-        private void ClearBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Canvas.Children.Clear();
         }
 
         private void EllipseBtn_Click(object sender, RoutedEventArgs e)
@@ -64,7 +57,18 @@ namespace PaintPatterns
             RectangleBtn.IsEnabled = true;
             EllipseBtn.IsEnabled = false;
         }
+        private void UndoBtn_Click(object sender, RoutedEventArgs e)
+        {
+            invoker.Undo();
+        }
 
+        private void RedoBtn_Click(object sender, RoutedEventArgs e)
+        {
+            invoker.Redo();
+        }
+        #endregion
+
+        #region Mouse Button handling
         private void Canvas_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (Mouse.LeftButton == MouseButtonState.Pressed)
@@ -210,6 +214,7 @@ namespace PaintPatterns
                 }
             }
         }
+        #endregion
 
         public class draw
         {

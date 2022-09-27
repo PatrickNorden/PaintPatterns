@@ -1,19 +1,18 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Reflection;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Shapes;
+using System.Windows;
+using System;
 
 namespace PaintPatterns.CommandPattern
 {
-    internal class CommandInit : ICommand
+    internal class CommandDraw : ICommand
     {
-        private readonly CommandInvoker invoker;
-
-        public CommandInit()
-        {
-            this.invoker = CommandInvoker.GetInstance();
-        }
-
         public void Execute()
         {
-            invoker.MainWindow.SelectBtn.IsEnabled = false;
+            throw new NotImplementedException();
         }
 
         public void Redo()

@@ -2,18 +2,19 @@
 
 namespace PaintPatterns.CommandPattern
 {
-    internal class CommandInit : ICommand
+    internal class CommandClear : ICommand
     {
         private readonly CommandInvoker invoker;
 
-        public CommandInit()
+        public CommandClear()
         {
             this.invoker = CommandInvoker.GetInstance();
         }
 
+
         public void Execute()
         {
-            invoker.MainWindow.SelectBtn.IsEnabled = false;
+            invoker.MainWindow.Canvas.Children.Clear();
         }
 
         public void Redo()

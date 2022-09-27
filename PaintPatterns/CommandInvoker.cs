@@ -1,9 +1,6 @@
-﻿using System;
+﻿using PaintPatterns.CommandPattern;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PaintPatterns.CommandPattern;
 using ICommand = PaintPatterns.CommandPattern.ICommand;
 
 namespace PaintPatterns
@@ -13,54 +10,115 @@ namespace PaintPatterns
         private readonly Stack<ICommand> commandsDone = new Stack<ICommand>();
         private readonly Stack<ICommand> commandsUndone = new Stack<ICommand>();
         private static readonly CommandInvoker Instance = new CommandInvoker();
+        public MainWindow MainWindow;
 
         private CommandInvoker() { }
 
+        /// <summary>
+        /// Inits the application
+        /// </summary>
+        public void Init()
+        {
+            var cmd = new CommandInit();
+            cmd.Execute();
+        }
+
+        /// <summary>
+        /// Undo the last command that is on the commandsDone stack
+        /// Push the command you want to undo to the commandsUndone stack
+        /// </summary>
         public void Undo()
         {
-            throw new NotImplementedException();
+            if (commandsDone.TryPop(out var cmd))
+            {
+                cmd.Undo();
+                commandsUndone.Push(cmd);
+            }
         }
 
+        /// <summary>
+        /// Redo the last command that is on the commandsUndone stack
+        /// Push the command you want to undo to the commandsDone stack
+        /// </summary>
         public void Redo()
         {
-            throw new NotImplementedException();
+            if (commandsUndone.TryPop(out var cmd))
+            {
+                cmd.Redo();
+                commandsDone.Push(cmd);
+            }
         }
 
-        public void InitApp()
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// Resize drawing
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
         public void Resize()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Move drawing
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        public void Move()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Save canvas state
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
         public void Save()
         {
             throw new NotImplementedException();
         }
 
+
+        /// <summary>
+        /// Load canvas state
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
         public void Load()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Clear canvas
+        /// </summary>
         public void Clear()
         {
-            throw new NotImplementedException();
+            var cmd = new CommandClear();
+            cmd.Execute();
+            commandsDone.Push(cmd);
         }
 
+
+        /// <summary>
+        /// Update groups
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
         public void UpdateGroups()
         {
             throw new NotImplementedException();
         }
-
+        
+        /// <summary>
+        /// Add groups
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
         public void AddGroups()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Get an instance
+        /// </summary>
+        /// <returns></returns>
         public static CommandInvoker GetInstance()
         {
             return Instance;

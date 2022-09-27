@@ -1,19 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace PaintPatterns.CommandPattern
 {
-    internal class CommandInit : ICommand
+    internal class CommandUpdateGroup : ICommand
     {
-        private readonly CommandInvoker invoker;
-
-        public CommandInit()
-        {
-            this.invoker = CommandInvoker.GetInstance();
-        }
-
         public void Execute()
         {
-            invoker.MainWindow.SelectBtn.IsEnabled = false;
+            throw new NotImplementedException();
         }
 
         public void Redo()
