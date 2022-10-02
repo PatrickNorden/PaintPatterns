@@ -1,6 +1,12 @@
 ﻿using PaintPatterns.CommandPattern;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Reflection;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Shapes;
 using ICommand = PaintPatterns.CommandPattern.ICommand;
 
 namespace PaintPatterns
@@ -53,7 +59,7 @@ namespace PaintPatterns
         /// Resize drawing
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
-        public void Resize()
+        public void Resize(Shape shape, MouseWheelEventArgs e)
         {
             throw new NotImplementedException();
         }
@@ -62,7 +68,7 @@ namespace PaintPatterns
         /// Move drawing
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
-        public void Move()
+        public void Move(MouseEventArgs e)
         {
             throw new NotImplementedException();
         }
@@ -122,6 +128,36 @@ namespace PaintPatterns
         public static CommandInvoker GetInstance()
         {
             return Instance;
+        }
+        public void Draw(System.Windows.Point p2)
+        {
+            var cmd = (CommandDraw)commandsDone.Pop();
+            cmd.x2 = (int) Math.Round(p2.X);
+            cmd.y2 = (int)Math.Round(p2.Y);
+            cmd.Execute();
+            commandsDone.Push(cmd);
+        }
+
+        public void StartDraw(System.Windows.Point p1, Shape shape)
+        {
+            ICommand cmd = new CommandDraw(p1, shape);
+            commandsDone.Push(cmd);
+        }
+
+        public static Brush RandColor()
+        {
+            Brush result = Brushes.Transparent;
+
+            Random rnd = new Random();
+
+            Type brushesType = typeof(Brushes);
+
+            PropertyInfo[] properties = brushesType.GetProperties();
+
+            int random = rnd.Next(properties.Length);
+            result = (Brush)properties[random].GetValue(null, null);
+
+            return result;
         }
     }
 }
