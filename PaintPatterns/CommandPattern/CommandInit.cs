@@ -13,7 +13,7 @@ namespace PaintPatterns.CommandPattern
 
         public void Execute()
         {
-            invoker.MainWindow.SelectBtn.IsEnabled = false;
+            //invoker.MainWindow.SelectBtn.IsEnabled = false;
         }
 
         public void Redo()

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nick\\Source\\Repos\\PaintPatterns\\PaintPatterns\\PaintPatterns.csproj": {}
+    "C:\\Users\\Nick\\source\\repos\\PaintPatterns\\PaintPatterns\\PaintPatterns.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nick\\Source\\Repos\\PaintPatterns\\PaintPatterns\\PaintPatterns.csproj": {
+    "C:\\Users\\Nick\\source\\repos\\PaintPatterns\\PaintPatterns\\PaintPatterns.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nick\\Source\\Repos\\PaintPatterns\\PaintPatterns\\PaintPatterns.csproj",
+        "projectUniqueName": "C:\\Users\\Nick\\source\\repos\\PaintPatterns\\PaintPatterns\\PaintPatterns.csproj",
         "projectName": "PaintPatterns",
-        "projectPath": "C:\\Users\\Nick\\Source\\Repos\\PaintPatterns\\PaintPatterns\\PaintPatterns.csproj",
+        "projectPath": "C:\\Users\\Nick\\source\\repos\\PaintPatterns\\PaintPatterns\\PaintPatterns.csproj",
         "packagesPath": "C:\\Users\\Nick\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nick\\Source\\Repos\\PaintPatterns\\PaintPatterns\\obj\\",
+        "outputPath": "C:\\Users\\Nick\\source\\repos\\PaintPatterns\\PaintPatterns\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
