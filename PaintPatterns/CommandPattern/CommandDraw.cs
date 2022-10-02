@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -32,8 +33,13 @@ namespace PaintPatterns.CommandPattern
         public void Select(object sender, MouseButtonEventArgs e)
         {
             if (!(sender is Shape) || invoker.MainWindow.currentAction != "select") return;
-            throw new NotImplementedException();
-
+            if (invoker.MainWindow.selected != null)
+            {
+                invoker.MainWindow.selected = null;
+            }
+            if (invoker.MainWindow.selected == shape) return;
+            invoker.MainWindow.selected = shape;
+            invoker.StartMove(shape, e.GetPosition(invoker.MainWindow.Canvas));
         }
         public void Execute()
         {

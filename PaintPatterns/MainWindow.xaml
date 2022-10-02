@@ -21,13 +21,13 @@
         <Button Width="70" Height="50"  Name="SelectBtn" Content="Select" Click="SelectBtn_Click"
                 HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="13" Margin="0,10,10,0"
                 />
-        <Button Width="70" Height="50" Name="RectangleBtn" Content="Rectangle" Click="RectangleBtn_Click"
+        <Button Width="70" Height="50" Name="rectangle" Content="Rectangle" Click="RectangleBtn_Click"
                 HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="13" Margin="0,97,10,0"
                 />
         <Button Width="70" Height="50" Name="ClearBtn" Content="Clear" Click="ClearBtn_Click"
                 HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="13" Margin="0,430,10,0"
                 />
-        <Button Width="70" Height="50" Name="EllipseBtn" Content="Ellipse" Click="EllipseBtn_Click"  
+        <Button Width="70" Height="50" Name="ellipse" Content="Ellipse" Click="EllipseBtn_Click"  
                 HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="13" Margin="0,0,10,287"
                 />
 

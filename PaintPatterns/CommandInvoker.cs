@@ -1,12 +1,12 @@
-﻿using PaintPatterns.CommandPattern;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Reflection;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using PaintPatterns.CommandPattern;
 using ICommand = PaintPatterns.CommandPattern.ICommand;
 
 namespace PaintPatterns
@@ -62,6 +62,18 @@ namespace PaintPatterns
         public void Resize(Shape shape, MouseWheelEventArgs e)
         {
             throw new NotImplementedException();
+            //var cmd = new CommandResize(shape, e);
+            //cmd.Execute();
+            //commandsDone.Push(cmd);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void StartMove(Shape shape, Point pStart)
+        {
+            ICommand cmd = new CommandMove(shape, pStart, MainWindow);
+            commandsDone.Push(cmd);
         }
 
         /// <summary>
@@ -70,7 +82,13 @@ namespace PaintPatterns
         /// <exception cref="NotImplementedException"></exception>
         public void Move(MouseEventArgs e)
         {
-            throw new NotImplementedException();
+            var cmd = commandsDone.Pop();
+            if (cmd is CommandMove cmdMove)
+            {
+                cmdMove.CurrMouseEventArgs = e;
+                cmdMove.Execute();
+                commandsDone.Push(cmdMove);
+            }
         }
 
         /// <summary>

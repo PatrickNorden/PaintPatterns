@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -54,7 +55,10 @@ namespace PaintPatterns
                     invoker.Draw(e.GetPosition(Canvas));
                     break;
                 case "select":
-                    if (selected != null) invoker.Move(e);
+                    if (selected != null)
+                    {
+                        invoker.Move(e);
+                    }
                     break;
             }
         }
@@ -84,14 +88,18 @@ namespace PaintPatterns
 
         private void RectangleBtn_Click(object sender, RoutedEventArgs e)
         {
-            currentAction = "rectangle";
-            //invoker.StartDraw(initialPosition, new Rectangle());
+            Button s = (Button)sender;
+            currentAction = s.Name;
+            if (selected == null) return;
+            selected = null;
         }
 
         private void EllipseBtn_Click(object sender, RoutedEventArgs e)
         {
-            currentAction = "ellipse";
-            //invoker.StartDraw(initialPosition, new Ellipse());
+            Button s = (Button)sender;
+            currentAction = s.Name;
+            if (selected == null) return;
+            selected = null;
         }
 
         private void ClearBtn_Click(object sender, RoutedEventArgs e)
