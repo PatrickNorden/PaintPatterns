@@ -61,10 +61,9 @@ namespace PaintPatterns
         /// <exception cref="NotImplementedException"></exception>
         public void Resize(Shape shape, MouseWheelEventArgs e)
         {
-            throw new NotImplementedException();
-            //var cmd = new CommandResize(shape, e);
-            //cmd.Execute();
-            //commandsDone.Push(cmd);
+            var cmd = new CommandResize(shape, e);
+            cmd.Execute();
+            commandsDone.Push(cmd);
         }
 
         /// <summary>

@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Shapes;
 
@@ -63,14 +64,14 @@ namespace PaintPatterns
             }
         }
 
-        private void Canvase_MouseWheel(object sender, MouseWheelEventArgs e)
+        private void Canvas_MouseWheel(object sender, MouseWheelEventArgs e)
         {
             if (selected != null) invoker.Resize(selected, e);
         }
         #endregion
 
         #region Button Handling
-        
+
         private void UndoBtn_Click(object sender, RoutedEventArgs e)
         {
             invoker.Undo();

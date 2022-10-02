@@ -8,10 +8,6 @@
         Title="MainWindow" Height="520" Width="800" MinHeight="520" MinWidth="800"
         MouseUp="Window_MouseUp">
     <Grid Background="AliceBlue">
-        <Canvas Width="{Binding ElementName=MainWin, Path=ActualWidth}"
-                Height="{Binding ElementName=MainWin, Path=ActualHeight}" Background="White" Margin="10,10,87,10" Name="Canvas" MouseMove="Canvas_MouseMove"  MouseDown="Canvas_MouseDown">
-
-        </Canvas>
         <Button Width="70" Height="50"  Name="UndoBtn" Content="Undo" Click="UndoBtn_Click"
                 HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="13" Margin="0,320,10,0"
                 />
@@ -30,6 +26,9 @@
         <Button Width="70" Height="50" Name="ellipse" Content="Ellipse" Click="EllipseBtn_Click"  
                 HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="13" Margin="0,0,10,287"
                 />
+        <Canvas Width="{Binding ElementName=MainWin, Path=ActualWidth}"
+                Height="{Binding ElementName=MainWin, Path=ActualHeight}" Background="White" Margin="10,10,87,10" Name="Canvas" MouseMove="Canvas_MouseMove"  MouseDown="Canvas_MouseDown" MouseWheel="Canvas_MouseWheel" >
 
+        </Canvas>
     </Grid>
 </Window>
