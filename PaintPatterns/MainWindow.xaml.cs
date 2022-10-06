@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Shapes;
+using PaintPatterns.CompositePattern;
 
 namespace PaintPatterns
 {
@@ -14,13 +17,14 @@ namespace PaintPatterns
         public Point initialPosition;
         private bool mouseButtonHeld;
         public Shape selected;
+        public Composite root = new Composite("root", null);
 
         private readonly CommandInvoker invoker;
 
         public MainWindow()
         {
             invoker = CommandInvoker.GetInstance();
-            invoker.MainWindow = this;
+            invoker.MainWindow = this;   
         }
 
         #region Mouse button handling

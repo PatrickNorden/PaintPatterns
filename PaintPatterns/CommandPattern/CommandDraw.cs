@@ -34,6 +34,8 @@ namespace PaintPatterns.CommandPattern
             shape.Stroke = shape.Fill = CommandInvoker.RandColor();
             shape.StrokeThickness = 3;
             invoker.MainWindow.Canvas.Children.Add(shape);
+            //ADD COMPOSITE TEMPORARY SOLUTION
+            invoker.AddComposite("shape", shape);
         }
 
         /// <summary>

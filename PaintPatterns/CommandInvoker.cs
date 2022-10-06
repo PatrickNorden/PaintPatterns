@@ -7,6 +7,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using PaintPatterns.CommandPattern;
+using PaintPatterns.CompositePattern;
 using ICommand = PaintPatterns.CommandPattern.ICommand;
 
 namespace PaintPatterns
@@ -19,6 +20,12 @@ namespace PaintPatterns
         public MainWindow MainWindow;
 
         private CommandInvoker() { }
+
+        public void Init()
+        {
+            var cmd = new CommandInit();
+            cmd.Execute();
+        }
 
         /// <summary>
         /// Undo the last command that is on the commandsDone stack
@@ -82,25 +89,6 @@ namespace PaintPatterns
         }
 
         /// <summary>
-        /// Save canvas state
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public void Save()
-        {
-            throw new NotImplementedException();
-        }
-
-
-        /// <summary>
-        /// Load canvas state
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public void Load()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
         /// Clear canvas
         /// </summary>
         public void Clear()
@@ -108,25 +96,6 @@ namespace PaintPatterns
             var cmd = new CommandClear();
             cmd.Execute();
             commandsDone.Push(cmd);
-        }
-
-
-        /// <summary>
-        /// Update groups
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public void UpdateGroups()
-        {
-            throw new NotImplementedException();
-        }
-        
-        /// <summary>
-        /// Add groups
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public void AddGroups()
-        {
-            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -147,6 +116,13 @@ namespace PaintPatterns
             var cmd = (CommandDraw)commandsDone.Pop();
             cmd.x2 = (int) Math.Round(p2.X);
             cmd.y2 = (int)Math.Round(p2.Y);
+            cmd.Execute();
+            commandsDone.Push(cmd);
+        }
+
+        public void AddComposite(String name, Shape shape)
+        {
+            var cmd = new CommandComposite(name, shape);
             cmd.Execute();
             commandsDone.Push(cmd);
         }
