@@ -16,6 +16,9 @@ namespace PaintPatterns.CommandPattern
             this.mouseDelta = -currMouseWheelEventArgs.Delta;
         }
 
+        /// <summary>
+        /// Check if the mousewheel was scrolled up or down and resize according to the amount scrolled
+        /// </summary>
         public void Execute()
         {
             double factor = mouseDelta;
@@ -35,7 +38,9 @@ namespace PaintPatterns.CommandPattern
         {
             Undo();
         }
-
+        /// <summary>
+        /// just do opposite of what the last scroll action was
+        /// </summary>
         public void Undo()
         {
             mouseDelta *= -1;

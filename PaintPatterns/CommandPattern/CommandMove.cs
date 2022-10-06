@@ -15,15 +15,26 @@ namespace PaintPatterns.CommandPattern
         private readonly MainWindow mainWindow;
         private System.Drawing.Point oldP = new System.Drawing.Point(0,0);
         public MouseEventArgs CurrMouseEventArgs;
-        public CommandMove(Shape shape, Point p2, MainWindow mainWindow)
+
+        /// <summary>
+        /// Get the original position of the shape
+        /// </summary>
+        /// <param name="shape"></param>
+        /// <param name="mouseP"></param>
+        /// <param name="mainWindow"></param>
+        public CommandMove(Shape shape, Point mouseP, MainWindow mainWindow)
         {
             this.mainWindow = mainWindow;
             this.shape = shape;
             oldP.X = (int)MathF.Round((float)Canvas.GetLeft(shape));
             oldP.Y = (int)MathF.Round((float)Canvas.GetTop(shape));
-            offset.X = (int)(p2.X - Canvas.GetLeft(shape));
-            offset.Y = (int)(p2.Y - Canvas.GetTop(shape));
+            offset.X = (int)(mouseP.X - Canvas.GetLeft(shape));
+            offset.Y = (int)(mouseP.Y - Canvas.GetTop(shape));
         }
+
+        /// <summary>
+        /// Get the position of the mouse and move the shape to this position
+        /// </summary>
         public void Execute()
         {
             Point absoluteP = CurrMouseEventArgs.GetPosition(mainWindow.Canvas);
@@ -35,6 +46,9 @@ namespace PaintPatterns.CommandPattern
             
         }
 
+        /// <summary>
+        /// Move the shape back to the last position it was moved from
+        /// </summary>
         public void Redo()
         {
             System.Drawing.Point newP = oldP;
@@ -42,6 +56,9 @@ namespace PaintPatterns.CommandPattern
             mainWindow.SetCanvasOffset(newP, shape);
         }
 
+        /// <summary>
+        /// Move the position bakc to the previous position
+        /// </summary>
         public void Undo()
         {
             System.Drawing.Point newPos = oldP;

@@ -21,15 +21,6 @@ namespace PaintPatterns
         private CommandInvoker() { }
 
         /// <summary>
-        /// Inits the application
-        /// </summary>
-        public void Init()
-        {
-            var cmd = new CommandInit();
-            cmd.Execute();
-        }
-
-        /// <summary>
         /// Undo the last command that is on the commandsDone stack
         /// Push the command you want to undo to the commandsUndone stack
         /// </summary>
@@ -67,7 +58,7 @@ namespace PaintPatterns
         }
 
         /// <summary>
-        /// 
+        /// Start before moving the shape
         /// </summary>
         public void StartMove(Shape shape, Point pStart)
         {
@@ -146,6 +137,11 @@ namespace PaintPatterns
         {
             return Instance;
         }
+
+        /// <summary>
+        /// start drawing a shape from the original position to the given position the mouse is at
+        /// </summary>
+        /// <param name="p2"></param>
         public void Draw(System.Windows.Point p2)
         {
             var cmd = (CommandDraw)commandsDone.Pop();
@@ -155,12 +151,21 @@ namespace PaintPatterns
             commandsDone.Push(cmd);
         }
 
+        /// <summary>
+        /// When the current action is drawing and the canvas is clicked start with a drawing command
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="shape"></param>
         public void StartDraw(System.Windows.Point p1, Shape shape)
         {
             ICommand cmd = new CommandDraw(p1, shape);
             commandsDone.Push(cmd);
         }
 
+        /// <summary>
+        /// Return a random color
+        /// </summary>
+        /// <returns></returns>
         public static Brush RandColor()
         {
             Brush result = Brushes.Transparent;

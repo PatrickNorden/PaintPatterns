@@ -11,7 +11,9 @@ namespace PaintPatterns.CommandPattern
             this.invoker = CommandInvoker.GetInstance();
         }
 
-
+        /// <summary>
+        /// Clear the canvas
+        /// </summary>
         public void Execute()
         {
             invoker.MainWindow.Canvas.Children.Clear();
