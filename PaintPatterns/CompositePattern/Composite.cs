@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Shapes;
 
 namespace PaintPatterns.CompositePattern
@@ -10,7 +7,7 @@ namespace PaintPatterns.CompositePattern
     public class Composite : Component
     {
         List<Component> children = new List<Component>();
-        public Composite(String name, Shape shape, Component parent)
+        public Composite(string name, Shape shape, Component parent)
             : base(name, shape, parent)
         {
         }
@@ -45,6 +42,10 @@ namespace PaintPatterns.CompositePattern
             return shape;
         }
 
+        /// <summary>
+        /// Write the current parent-child structure of this composite in the output console.
+        /// </summary>
+        /// <param name="depth"></param>
         public override void Display(int depth)
         {
             System.Diagnostics.Debug.WriteLine(new string('-', depth) + name);

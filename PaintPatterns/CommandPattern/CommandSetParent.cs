@@ -21,6 +21,10 @@ namespace PaintPatterns.CommandPattern
             this.parent = invoker.MainWindow.parent;
         }
 
+        /// <summary>
+        /// When the given child has multiple children under them check all of them recursive if the shape of the child under them is the same as the clicked object
+        /// </summary>
+        /// <param name="child"></param>
         private void setParent(Composite child)
         {
             if(child.GetChildren().Count() > 0)

@@ -11,12 +11,12 @@ namespace PaintPatterns.CommandPattern
     internal class CommandComposite : ICommand
     {
         private readonly CommandInvoker invoker;
-        String name;
+        string name;
         Shape shape;
         Composite newShape;
         Component parent;
 
-        public CommandComposite(String name, Shape shape, Component parent)
+        public CommandComposite(string name, Shape shape, Component parent)
         {
             this.invoker = CommandInvoker.GetInstance();
             this.name = name;
@@ -24,10 +24,13 @@ namespace PaintPatterns.CommandPattern
             this.parent = parent;
         }
 
+        /// <summary>
+        /// Create a new composite with a name, shape and its parent
+        /// </summary>
         public void Execute()
         {
             newShape = new Composite(name, shape, parent);
-            invoker.MainWindow.parent.AddChild(newShape);
+            parent.AddChild(newShape);
         }
 
         public void Redo()

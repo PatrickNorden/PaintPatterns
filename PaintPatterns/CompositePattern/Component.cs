@@ -9,11 +9,11 @@ namespace PaintPatterns.CompositePattern
 {
     public abstract class Component
     {
-        protected String name;
+        protected string name;
         protected Shape shape;
         protected Component parent;
 
-        public Component(String name, Shape shape, Component parent)
+        public Component(string name, Shape shape, Component parent)
         {
             this.name = name;
             this.shape = shape;

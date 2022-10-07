@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -120,13 +119,23 @@ namespace PaintPatterns
             commandsDone.Push(cmd);
         }
 
+        /// <summary>
+        /// Start the parent setting command with a clicked element
+        /// </summary>
+        /// <param name="e"></param>
         public void SetParent(MouseButtonEventArgs e)
         {
             var cmd = new CommandSetParent(e);
             cmd.Execute();
         }
 
-        public void AddComposite(String name, Shape shape, Component parent)
+        /// <summary>
+        /// Start the composite adding command with a name, shape and its parent
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="shape"></param>
+        /// <param name="parent"></param>
+        public void AddComposite(string name, Shape shape, Component parent)
         {
             var cmd = new CommandComposite(name, shape, parent);
             cmd.Execute();
