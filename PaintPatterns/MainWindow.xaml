@@ -21,10 +21,10 @@
                 HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="13" Margin="0,450,10,0"
                 />
         <Button Width="100" Height="50" Name="ParentBtn" Content="Select Parent" Click="ParentBtn_Click"
-                HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="13" Margin="0,450,10,0"
+                HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="13" Margin="0,532,10,0"
                 />
         <Canvas Width="{Binding ElementName=MainWin, Path=ActualWidth}"
-                Height="{Binding ElementName=MainWin, Path=ActualHeight}" Background="White" Margin="132,10,115,19" Name="Canvas" MouseMove="Canvas_MouseMove"  MouseDown="Canvas_MouseDown" MouseWheel="Canvas_MouseWheel" >
+                Height="{Binding ElementName=MainWin, Path=ActualHeight}" Background="White" Margin="210,10,115,19" Name="Canvas" MouseMove="Canvas_MouseMove"  MouseDown="Canvas_MouseDown" MouseWheel="Canvas_MouseWheel" >
 
         </Canvas>
         <Button Width="100" Height="50" x:Name="rectangle" Content="Rectangle" Click="RectangleBtn_Click"
@@ -33,7 +33,6 @@
         <Button Width="100" Height="50" x:Name="ellipse" Content="Ellipse" Click="EllipseBtn_Click"  
                 HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="13" Margin="0,0,10,796"
                 />
-        <ListBox x:Name="groups" Background="LightCyan" Margin="0,0,1793,0">
-        </ListBox>
+        <ListBox x:Name="components" Background="LightBlue" Margin="0,0,1715,0"></ListBox>
     </Grid>
 </Window>

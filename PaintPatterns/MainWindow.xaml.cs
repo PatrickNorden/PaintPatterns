@@ -20,6 +20,7 @@ namespace PaintPatterns
         public Composite root = new Composite("root", null, null);
         public Component parent;
 
+
         private readonly CommandInvoker invoker;
 
         public MainWindow()
@@ -65,6 +66,7 @@ namespace PaintPatterns
         private void Window_MouseUp(object sender, MouseButtonEventArgs e)
         {
             mouseButtonHeld = false;
+            root.Display(0);
         }
 
         /// <summary>

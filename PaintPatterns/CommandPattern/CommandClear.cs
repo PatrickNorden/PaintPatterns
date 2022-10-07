@@ -17,6 +17,8 @@ namespace PaintPatterns.CommandPattern
         public void Execute()
         {
             invoker.MainWindow.Canvas.Children.Clear();
+            invoker.MainWindow.root.Clear();
+            invoker.MainWindow.parent = invoker.MainWindow.root;
         }
 
         public void Redo()

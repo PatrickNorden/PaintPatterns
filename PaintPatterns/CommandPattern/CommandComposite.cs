@@ -32,12 +32,13 @@ namespace PaintPatterns.CommandPattern
 
         public void Redo()
         {
-            invoker.MainWindow.parent.AddChild(newShape);
+
+            parent.AddChild(newShape);
         }
 
         public void Undo()
         {
-            invoker.MainWindow.parent.RemoveChild(newShape);
+            parent.RemoveChild(newShape);
         }
     }
 }

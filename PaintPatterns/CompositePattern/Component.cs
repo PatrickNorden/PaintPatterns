@@ -28,6 +28,8 @@ namespace PaintPatterns.CompositePattern
         public abstract Component GetParent();
 
         public abstract Shape GetShape();
+
+        public abstract void Clear();
         public abstract void Display(int depth);
     }
 }

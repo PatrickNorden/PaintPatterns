@@ -25,6 +25,11 @@ namespace PaintPatterns.CompositePattern
             children.Remove(component);
         }
 
+        public override void Clear()
+        {
+            children.Clear();
+        }
+
         public override List<Component> GetChildren()
         {
             return children;
@@ -42,7 +47,7 @@ namespace PaintPatterns.CompositePattern
 
         public override void Display(int depth)
         {
-            Console.WriteLine(new string('-', depth) + name);
+            System.Diagnostics.Debug.WriteLine(new string('-', depth) + name);
             foreach (Component component in children)
             {
                 component.Display(depth + 2);
