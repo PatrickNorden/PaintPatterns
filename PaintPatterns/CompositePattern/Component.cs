@@ -11,15 +11,23 @@ namespace PaintPatterns.CompositePattern
     {
         protected String name;
         protected Shape shape;
+        protected Component parent;
 
-        public Component(String name, Shape shape)
+        public Component(String name, Shape shape, Component parent)
         {
             this.name = name;
             this.shape = shape;
+            this.parent = parent;
         }
 
-        public abstract void Add(Component c);
-        public abstract void Remove(Component c);
+        public abstract void AddChild(Component c);
+        public abstract void RemoveChild(Component c);
+
+        public abstract List<Component> GetChildren();
+
+        public abstract Component GetParent();
+
+        public abstract Shape GetShape();
         public abstract void Display(int depth);
     }
 }

@@ -120,9 +120,15 @@ namespace PaintPatterns
             commandsDone.Push(cmd);
         }
 
-        public void AddComposite(String name, Shape shape)
+        public void SetParent(MouseButtonEventArgs e)
         {
-            var cmd = new CommandComposite(name, shape);
+            var cmd = new CommandSetParent(e);
+            cmd.Execute();
+        }
+
+        public void AddComposite(String name, Shape shape, Component parent)
+        {
+            var cmd = new CommandComposite(name, shape, parent);
             cmd.Execute();
             commandsDone.Push(cmd);
         }

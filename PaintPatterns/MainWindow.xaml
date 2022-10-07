@@ -20,6 +20,9 @@
         <Button Width="100" Height="50" Name="ClearBtn" Content="Clear" Click="ClearBtn_Click"
                 HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="13" Margin="0,450,10,0"
                 />
+        <Button Width="100" Height="50" Name="ParentBtn" Content="Select Parent" Click="ParentBtn_Click"
+                HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="13" Margin="0,450,10,0"
+                />
         <Canvas Width="{Binding ElementName=MainWin, Path=ActualWidth}"
                 Height="{Binding ElementName=MainWin, Path=ActualHeight}" Background="White" Margin="132,10,115,19" Name="Canvas" MouseMove="Canvas_MouseMove"  MouseDown="Canvas_MouseDown" MouseWheel="Canvas_MouseWheel" >
 

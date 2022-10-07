@@ -14,28 +14,30 @@ namespace PaintPatterns.CommandPattern
         String name;
         Shape shape;
         Composite newShape;
+        Component parent;
 
-        public CommandComposite(String name, Shape shape)
+        public CommandComposite(String name, Shape shape, Component parent)
         {
             this.invoker = CommandInvoker.GetInstance();
             this.name = name;
             this.shape = shape;
+            this.parent = parent;
         }
 
         public void Execute()
         {
-            newShape = new Composite(name, shape);
-            invoker.MainWindow.root.Add(newShape);
+            newShape = new Composite(name, shape, parent);
+            invoker.MainWindow.parent.AddChild(newShape);
         }
 
         public void Redo()
         {
-            invoker.MainWindow.root.Add(newShape);
+            invoker.MainWindow.parent.AddChild(newShape);
         }
 
         public void Undo()
         {
-            invoker.MainWindow.root.Remove(newShape);
+            invoker.MainWindow.parent.RemoveChild(newShape);
         }
     }
 }

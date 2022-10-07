@@ -17,14 +17,16 @@ namespace PaintPatterns
         public Point initialPosition;
         private bool mouseButtonHeld;
         public Shape selected;
-        public Composite root = new Composite("root", null);
+        public Composite root = new Composite("root", null, null);
+        public Component parent;
 
         private readonly CommandInvoker invoker;
 
         public MainWindow()
         {
             invoker = CommandInvoker.GetInstance();
-            invoker.MainWindow = this;   
+            invoker.MainWindow = this;
+            parent = root;
         }
 
         #region Mouse button handling
@@ -40,14 +42,18 @@ namespace PaintPatterns
         {
             mouseButtonHeld = true;
             initialPosition = e.GetPosition(Canvas);
-            if (currentAction != "rectangle" && currentAction != "ellipse") return;
+            if (currentAction != "rectangle" && currentAction != "ellipse" && currentAction !="parent") return;
             else if (currentAction == "rectangle")
             {
                 invoker.StartDraw(initialPosition, new Rectangle());
             }
-            else if(currentAction == "ellipse")
+            else if (currentAction == "ellipse")
             {
                 invoker.StartDraw(initialPosition, new Ellipse());
+            }
+            else if (currentAction == "parent")
+            {
+                invoker.SetParent(e);
             }
         }
 
@@ -162,6 +168,11 @@ namespace PaintPatterns
         private void ClearBtn_Click(object sender, RoutedEventArgs e)
         {
             invoker.Clear();
+        }
+
+        private void ParentBtn_Click(object sender, RoutedEventArgs e)
+        {
+            currentAction = "parent";
         }
 
         #endregion

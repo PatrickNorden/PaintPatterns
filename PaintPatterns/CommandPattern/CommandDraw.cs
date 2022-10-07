@@ -35,7 +35,7 @@ namespace PaintPatterns.CommandPattern
             shape.StrokeThickness = 3;
             invoker.MainWindow.Canvas.Children.Add(shape);
             //ADD COMPOSITE TEMPORARY SOLUTION
-            invoker.AddComposite("shape", shape);
+            invoker.AddComposite("shape", shape, invoker.MainWindow.parent);
         }
 
         /// <summary>
