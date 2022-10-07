@@ -5,30 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PaintPatterns"
         mc:Ignorable="d"
-        Title="MainWindow" Height="520" Width="800" MinHeight="520" MinWidth="800"
+        Title="MainWindow" Height="1080" Width="1920" MinHeight="1080" MinWidth="1920"
         MouseUp="Window_MouseUp">
     <Grid Background="AliceBlue">
-        <Button Width="70" Height="50"  Name="UndoBtn" Content="Undo" Click="UndoBtn_Click"
-                HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="13" Margin="0,320,10,0"
+        <Button Width="100" Height="50"  Name="UndoBtn" Content="Undo" Click="UndoBtn_Click"
+                HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="13" Margin="0,395,10,0"
                 />
-        <Button Width="70" Height="50"  Name="RedoBtn" Content="Redo" Click="RedoBtn_Click"
-                HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="13" Margin="0,252,10,0"
+        <Button Width="100" Height="50"  Name="RedoBtn" Content="Redo" Click="RedoBtn_Click"
+                HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="13" Margin="0,340,10,0"
                 />
-        <Button Width="70" Height="50"  Name="SelectBtn" Content="Select" Click="SelectBtn_Click"
+        <Button Width="100" Height="50"  Name="SelectBtn" Content="Select" Click="SelectBtn_Click"
                 HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="13" Margin="0,10,10,0"
                 />
-        <Button Width="70" Height="50" Name="rectangle" Content="Rectangle" Click="RectangleBtn_Click"
-                HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="13" Margin="0,97,10,0"
+        <Button Width="100" Height="50" Name="ClearBtn" Content="Clear" Click="ClearBtn_Click"
+                HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="13" Margin="0,450,10,0"
                 />
-        <Button Width="70" Height="50" Name="ClearBtn" Content="Clear" Click="ClearBtn_Click"
-                HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="13" Margin="0,430,10,0"
-                />
-        <Button Width="70" Height="50" Name="ellipse" Content="Ellipse" Click="EllipseBtn_Click"  
-                HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="13" Margin="0,0,10,287"
+        <Button Width="100" Height="50" Name="ParentBtn" Content="Select Parent" Click="ParentBtn_Click"
+                HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="13" Margin="0,532,10,0"
                 />
         <Canvas Width="{Binding ElementName=MainWin, Path=ActualWidth}"
-                Height="{Binding ElementName=MainWin, Path=ActualHeight}" Background="White" Margin="10,10,87,10" Name="Canvas" MouseMove="Canvas_MouseMove"  MouseDown="Canvas_MouseDown" MouseWheel="Canvas_MouseWheel" >
+                Height="{Binding ElementName=MainWin, Path=ActualHeight}" Background="White" Margin="210,10,115,19" Name="Canvas" MouseMove="Canvas_MouseMove"  MouseDown="Canvas_MouseDown" MouseWheel="Canvas_MouseWheel" >
 
         </Canvas>
+        <Button Width="100" Height="50" x:Name="rectangle" Content="Rectangle" Click="RectangleBtn_Click"
+                HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="13" Margin="0,131,10,0"
+                />
+        <Button Width="100" Height="50" x:Name="ellipse" Content="Ellipse" Click="EllipseBtn_Click"  
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="13" Margin="0,0,10,796"
+                />
+        <ListBox x:Name="components" Background="LightBlue" Margin="0,0,1715,0"></ListBox>
     </Grid>
 </Window>

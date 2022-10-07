@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using PaintPatterns.CommandPattern;
+using PaintPatterns.CompositePattern;
 using ICommand = PaintPatterns.CommandPattern.ICommand;
 
 namespace PaintPatterns
@@ -19,6 +19,12 @@ namespace PaintPatterns
         public MainWindow MainWindow;
 
         private CommandInvoker() { }
+
+        public void Init()
+        {
+            var cmd = new CommandInit();
+            cmd.Execute();
+        }
 
         /// <summary>
         /// Undo the last command that is on the commandsDone stack
@@ -82,25 +88,6 @@ namespace PaintPatterns
         }
 
         /// <summary>
-        /// Save canvas state
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public void Save()
-        {
-            throw new NotImplementedException();
-        }
-
-
-        /// <summary>
-        /// Load canvas state
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public void Load()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
         /// Clear canvas
         /// </summary>
         public void Clear()
@@ -108,25 +95,6 @@ namespace PaintPatterns
             var cmd = new CommandClear();
             cmd.Execute();
             commandsDone.Push(cmd);
-        }
-
-
-        /// <summary>
-        /// Update groups
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public void UpdateGroups()
-        {
-            throw new NotImplementedException();
-        }
-        
-        /// <summary>
-        /// Add groups
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public void AddGroups()
-        {
-            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -147,6 +115,29 @@ namespace PaintPatterns
             var cmd = (CommandDraw)commandsDone.Pop();
             cmd.x2 = (int) Math.Round(p2.X);
             cmd.y2 = (int)Math.Round(p2.Y);
+            cmd.Execute();
+            commandsDone.Push(cmd);
+        }
+
+        /// <summary>
+        /// Start the parent setting command with a clicked element
+        /// </summary>
+        /// <param name="e"></param>
+        public void SetParent(MouseButtonEventArgs e)
+        {
+            var cmd = new CommandSetParent(e);
+            cmd.Execute();
+        }
+
+        /// <summary>
+        /// Start the composite adding command with a name, shape and its parent
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="shape"></param>
+        /// <param name="parent"></param>
+        public void AddComposite(string name, Shape shape, Component parent)
+        {
+            var cmd = new CommandComposite(name, shape, parent);
             cmd.Execute();
             commandsDone.Push(cmd);
         }

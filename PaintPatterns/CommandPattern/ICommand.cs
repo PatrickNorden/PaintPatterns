@@ -1,4 +1,8 @@
-﻿namespace PaintPatterns.CommandPattern
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace PaintPatterns.CommandPattern
 {
     interface ICommand
     {

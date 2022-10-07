@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Shapes;
+using PaintPatterns.CompositePattern;
 
 namespace PaintPatterns
 {
@@ -14,6 +17,9 @@ namespace PaintPatterns
         public Point initialPosition;
         private bool mouseButtonHeld;
         public Shape selected;
+        public Composite root = new Composite("root", null, null);
+        public Component parent;
+
 
         private readonly CommandInvoker invoker;
 
@@ -21,6 +27,7 @@ namespace PaintPatterns
         {
             invoker = CommandInvoker.GetInstance();
             invoker.MainWindow = this;
+            parent = root;
         }
 
         #region Mouse button handling
@@ -29,6 +36,7 @@ namespace PaintPatterns
         /// Register that the mousebutton is being held
         /// set the initial position to the position that has been clicked
         /// if the current action is a rectangle start drawing a rectangle
+        /// if hte currenct aciton is parent start the parent selection proces.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -36,14 +44,18 @@ namespace PaintPatterns
         {
             mouseButtonHeld = true;
             initialPosition = e.GetPosition(Canvas);
-            if (currentAction != "rectangle" && currentAction != "ellipse") return;
+            if (currentAction != "rectangle" && currentAction != "ellipse" && currentAction !="parent") return;
             else if (currentAction == "rectangle")
             {
                 invoker.StartDraw(initialPosition, new Rectangle());
             }
-            else if(currentAction == "ellipse")
+            else if (currentAction == "ellipse")
             {
                 invoker.StartDraw(initialPosition, new Ellipse());
+            }
+            else if (currentAction == "parent")
+            {
+                invoker.SetParent(e);
             }
         }
 
@@ -55,6 +67,7 @@ namespace PaintPatterns
         private void Window_MouseUp(object sender, MouseButtonEventArgs e)
         {
             mouseButtonHeld = false;
+            invoker.Init();
         }
 
         /// <summary>
@@ -102,6 +115,7 @@ namespace PaintPatterns
         private void UndoBtn_Click(object sender, RoutedEventArgs e)
         {
             invoker.Undo();
+            invoker.Init();
         }
 
         /// <summary>
@@ -112,6 +126,7 @@ namespace PaintPatterns
         private void RedoBtn_Click(object sender, RoutedEventArgs e)
         {
             invoker.Redo();
+            invoker.Init();
         }
 
         /// <summary>
@@ -158,6 +173,16 @@ namespace PaintPatterns
         private void ClearBtn_Click(object sender, RoutedEventArgs e)
         {
             invoker.Clear();
+        }
+
+        /// <summary>
+        /// Set the current action to parent to make it able to select a parent
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ParentBtn_Click(object sender, RoutedEventArgs e)
+        {
+            currentAction = "parent";
         }
 
         #endregion

@@ -1,24 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using PaintPatterns.CompositePattern;
 
 namespace PaintPatterns.CommandPattern
 {
-    internal class CommandClear : ICommand
+    internal class CommandInit : ICommand
     {
         private readonly CommandInvoker invoker;
 
-        public CommandClear()
+        public CommandInit()
         {
             this.invoker = CommandInvoker.GetInstance();
         }
 
-        /// <summary>
-        /// Clear the canvas
-        /// </summary>
         public void Execute()
         {
-            invoker.MainWindow.Canvas.Children.Clear();
-            invoker.MainWindow.root.Clear();
-            invoker.MainWindow.parent = invoker.MainWindow.root;
+            System.Diagnostics.Debug.WriteLine("\r\n");
+            invoker.MainWindow.root.Display(0);
         }
 
         public void Redo()

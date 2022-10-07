@@ -21,6 +21,7 @@ namespace PaintPatterns.CommandPattern
         /// <summary>
         /// Start by saving the x and y of the original position
         /// Give the shape a random color plus some styling options and add to canvas
+        /// Also add a shape to its parent
         /// </summary>
         /// <param name="p1"></param>
         /// <param name="shape"></param>
@@ -34,6 +35,7 @@ namespace PaintPatterns.CommandPattern
             shape.Stroke = shape.Fill = CommandInvoker.RandColor();
             shape.StrokeThickness = 3;
             invoker.MainWindow.Canvas.Children.Add(shape);
+            invoker.AddComposite(shape.DependencyObjectType.Name, shape, invoker.MainWindow.parent);
         }
 
         /// <summary>
