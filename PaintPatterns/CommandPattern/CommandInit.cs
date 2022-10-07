@@ -18,7 +18,8 @@ namespace PaintPatterns.CommandPattern
 
         public void Execute()
         {
-            throw new NotImplementedException();
+            System.Diagnostics.Debug.WriteLine("\r\n");
+            invoker.MainWindow.root.Display(0);
         }
 
         public void Redo()

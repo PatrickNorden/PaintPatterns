@@ -36,6 +36,7 @@ namespace PaintPatterns
         /// Register that the mousebutton is being held
         /// set the initial position to the position that has been clicked
         /// if the current action is a rectangle start drawing a rectangle
+        /// if hte currenct aciton is parent start the parent selection proces.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -66,7 +67,7 @@ namespace PaintPatterns
         private void Window_MouseUp(object sender, MouseButtonEventArgs e)
         {
             mouseButtonHeld = false;
-            root.Display(0);
+            invoker.Init();
         }
 
         /// <summary>
@@ -114,6 +115,7 @@ namespace PaintPatterns
         private void UndoBtn_Click(object sender, RoutedEventArgs e)
         {
             invoker.Undo();
+            invoker.Init();
         }
 
         /// <summary>
@@ -124,6 +126,7 @@ namespace PaintPatterns
         private void RedoBtn_Click(object sender, RoutedEventArgs e)
         {
             invoker.Redo();
+            invoker.Init();
         }
 
         /// <summary>
@@ -172,6 +175,11 @@ namespace PaintPatterns
             invoker.Clear();
         }
 
+        /// <summary>
+        /// Set the current action to parent to make it able to select a parent
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ParentBtn_Click(object sender, RoutedEventArgs e)
         {
             currentAction = "parent";
