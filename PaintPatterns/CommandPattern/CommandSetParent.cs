@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace PaintPatterns.CommandPattern
@@ -19,18 +20,26 @@ namespace PaintPatterns.CommandPattern
             this.e = e;
             this.parent = invoker.MainWindow.parent;
         }
+
+        private void setParent(Composite child)
+        {
+            if(child.GetChildren().Count() > 0)
+            {
+                foreach(Composite under in child.GetChildren())
+                {
+                    setParent(under);
+                }
+            }
+            if (e.Source == child.GetShape())
+            {
+                invoker.MainWindow.parent = child;
+            }
+        }
         public void Execute()
         {
-            foreach (Composite child in parent.GetChildren())
+            foreach (Composite child in invoker.MainWindow.root.GetChildren())
             {
-                if (child.GetChildren() != null)
-                {
-                    var cmd = new CommandSetParent(e);
-                }
-                if (e.Source == child.GetShape())
-                {
-                    invoker.MainWindow.parent = child;
-                }
+                setParent(child);
             }
         }
 
