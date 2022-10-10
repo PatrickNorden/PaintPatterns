@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rndeb\\source\\repos\\PaintPatterns\\PaintPatterns\\PaintPatterns.csproj": {}
+    "C:\\Users\\rndeb\\Source\\Repos\\PaintPatterns\\PaintPatterns\\PaintPatterns.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rndeb\\source\\repos\\PaintPatterns\\PaintPatterns\\PaintPatterns.csproj": {
+    "C:\\Users\\rndeb\\Source\\Repos\\PaintPatterns\\PaintPatterns\\PaintPatterns.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rndeb\\source\\repos\\PaintPatterns\\PaintPatterns\\PaintPatterns.csproj",
+        "projectUniqueName": "C:\\Users\\rndeb\\Source\\Repos\\PaintPatterns\\PaintPatterns\\PaintPatterns.csproj",
         "projectName": "PaintPatterns",
-        "projectPath": "C:\\Users\\rndeb\\source\\repos\\PaintPatterns\\PaintPatterns\\PaintPatterns.csproj",
+        "projectPath": "C:\\Users\\rndeb\\Source\\Repos\\PaintPatterns\\PaintPatterns\\PaintPatterns.csproj",
         "packagesPath": "C:\\Users\\rndeb\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rndeb\\source\\repos\\PaintPatterns\\PaintPatterns\\obj\\",
+        "outputPath": "C:\\Users\\rndeb\\Source\\Repos\\PaintPatterns\\PaintPatterns\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rndeb\\AppData\\Roaming\\NuGet\\NuGet.Config",

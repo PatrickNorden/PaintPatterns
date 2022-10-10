@@ -67,7 +67,8 @@ namespace PaintPatterns.CompositePattern
 
         public override void ClearShape()
         {
-            this.shape.Stroke = System.Windows.Media.Brushes.Transparent;            
+            this.shape.Stroke = System.Windows.Media.Brushes.Transparent;
+            this.shape.Visibility = System.Windows.Visibility.Hidden;
         }
 
         /// <summary>
