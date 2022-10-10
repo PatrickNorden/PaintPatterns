@@ -15,10 +15,13 @@ namespace PaintPatterns
     {
         public string currentAction = "select";
         public Point initialPosition;
-        private bool mouseButtonHeld;
+        public bool mouseButtonHeld;
         public Shape selected;
-        public Composite root = new Composite("root", null, null);
+        public Composite root = new Composite("root", null, null, new System.Windows.Point(0,0), new System.Windows.Point(0,0));
+        public Composite shape;
         public Component parent;
+        public Composite selectBox;
+        public List<Composite> groups = new List<Composite>();
 
 
         private readonly CommandInvoker invoker;
@@ -44,8 +47,7 @@ namespace PaintPatterns
         {
             mouseButtonHeld = true;
             initialPosition = e.GetPosition(Canvas);
-            if (currentAction != "rectangle" && currentAction != "ellipse" && currentAction !="parent") return;
-            else if (currentAction == "rectangle")
+            if (currentAction == "rectangle")
             {
                 invoker.StartDraw(initialPosition, new Rectangle());
             }
@@ -56,6 +58,10 @@ namespace PaintPatterns
             else if (currentAction == "parent")
             {
                 invoker.SetParent(e);
+            }
+            else if (currentAction == "group" )
+            {
+                invoker.StartGroup(initialPosition, new Rectangle());
             }
         }
 
@@ -68,6 +74,14 @@ namespace PaintPatterns
         {
             mouseButtonHeld = false;
             invoker.Init();
+            if(currentAction == "group")
+            {
+                invoker.UpdateGroup(root);
+            }
+            if(currentAction == "ellipse" || currentAction == "rectangle")
+            {
+                invoker.UpdateShape(shape);
+            }
         }
 
         /// <summary>
@@ -91,6 +105,9 @@ namespace PaintPatterns
                     {
                         invoker.Move(e);
                     }
+                    break;
+                case "group":
+                    invoker.Group(e.GetPosition(Canvas));
                     break;
             }
         }
@@ -185,6 +202,10 @@ namespace PaintPatterns
             currentAction = "parent";
         }
 
+        private void group_Click(object sender, RoutedEventArgs e)
+        {
+            currentAction = "group";
+        }
         #endregion
 
         /// <summary>
@@ -197,5 +218,6 @@ namespace PaintPatterns
             Canvas.SetLeft(shape, offset.X);
             Canvas.SetTop(shape, offset.Y);
         }
+
     }
 }
