@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nick\\source\\repos\\PaintPatterns\\PaintPatterns\\PaintPatterns.csproj": {}
+    "C:\\Users\\rndeb\\source\\repos\\PaintPatterns\\PaintPatterns\\PaintPatterns.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nick\\source\\repos\\PaintPatterns\\PaintPatterns\\PaintPatterns.csproj": {
+    "C:\\Users\\rndeb\\source\\repos\\PaintPatterns\\PaintPatterns\\PaintPatterns.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nick\\source\\repos\\PaintPatterns\\PaintPatterns\\PaintPatterns.csproj",
+        "projectUniqueName": "C:\\Users\\rndeb\\source\\repos\\PaintPatterns\\PaintPatterns\\PaintPatterns.csproj",
         "projectName": "PaintPatterns",
-        "projectPath": "C:\\Users\\Nick\\source\\repos\\PaintPatterns\\PaintPatterns\\PaintPatterns.csproj",
-        "packagesPath": "C:\\Users\\Nick\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nick\\source\\repos\\PaintPatterns\\PaintPatterns\\obj\\",
+        "projectPath": "C:\\Users\\rndeb\\source\\repos\\PaintPatterns\\PaintPatterns\\PaintPatterns.csproj",
+        "packagesPath": "C:\\Users\\rndeb\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\rndeb\\source\\repos\\PaintPatterns\\PaintPatterns\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Nick\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\rndeb\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Shapes;
 
 namespace PaintPatterns.CompositePattern
@@ -7,9 +8,13 @@ namespace PaintPatterns.CompositePattern
     public class Composite : Component
     {
         List<Component> children = new List<Component>();
-        public Composite(string name, Shape shape, Component parent)
-            : base(name, shape, parent)
+        System.Windows.Point initP, endP;
+
+        public Composite(string name, Shape shape, Component parent, System.Windows.Point initP, System.Windows.Point endP)
+            : base(name, shape, parent, initP, endP)
         {
+            this.initP = initP;
+            this.endP = endP;
         }
 
         public override void AddChild(Component component)
@@ -40,6 +45,22 @@ namespace PaintPatterns.CompositePattern
         public override Shape GetShape()
         {
             return shape;
+        }
+
+        public override void SetPos(System.Windows.Point initP, System.Windows.Point endP)
+        {
+            this.initP = initP;
+            this.endP = endP;
+        }
+
+        public override System.Windows.Point GetBeginPos()
+        {
+            return this.initP;
+        }
+
+        public override System.Windows.Point GetEndPos()
+        {
+            return this.endP;
         }
 
         /// <summary>

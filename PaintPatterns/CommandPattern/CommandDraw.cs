@@ -14,6 +14,7 @@ namespace PaintPatterns.CommandPattern
     internal class CommandDraw : ICommand
     {
         private readonly CommandInvoker invoker;
+        private Point beginP, endP;
         private readonly int x1, y1;
         public int x2, y2;
         Shape shape;
@@ -29,13 +30,14 @@ namespace PaintPatterns.CommandPattern
         {
             this.x1 = (int)Math.Round(p1.X);
             this.y1 = (int)Math.Round(p1.Y);
+            this.beginP = p1;
             this.invoker = CommandInvoker.GetInstance();
             this.shape = shape;
             shape.MouseDown += Select;
             shape.Stroke = shape.Fill = CommandInvoker.RandColor();
             shape.StrokeThickness = 3;
             invoker.MainWindow.Canvas.Children.Add(shape);
-            invoker.AddComposite(shape.DependencyObjectType.Name, shape, invoker.MainWindow.parent);
+            invoker.AddComposite(shape.DependencyObjectType.Name, shape, invoker.MainWindow.parent, beginP, endP);
         }
 
         /// <summary>
@@ -72,6 +74,8 @@ namespace PaintPatterns.CommandPattern
             invoker.MainWindow.SetCanvasOffset(pos, shape);
             shape.Width = w;
             shape.Height = h;
+            this.endP = new System.Windows.Point(x, y);
+
         }
 
         /// <summary>

@@ -113,7 +113,7 @@ namespace PaintPatterns
         public void Draw(System.Windows.Point p2)
         {
             var cmd = (CommandDraw)commandsDone.Pop();
-            cmd.x2 = (int) Math.Round(p2.X);
+            cmd.x2 = (int)Math.Round(p2.X);
             cmd.y2 = (int)Math.Round(p2.Y);
             cmd.Execute();
             commandsDone.Push(cmd);
@@ -135,9 +135,9 @@ namespace PaintPatterns
         /// <param name="name"></param>
         /// <param name="shape"></param>
         /// <param name="parent"></param>
-        public void AddComposite(string name, Shape shape, Component parent)
+        public void AddComposite(string name, Shape shape, Component parent, Point beginP, Point endP)
         {
-            var cmd = new CommandComposite(name, shape, parent);
+            var cmd = new CommandComposite(name, shape, parent, beginP, endP);
             cmd.Execute();
             commandsDone.Push(cmd);
         }
@@ -151,6 +151,26 @@ namespace PaintPatterns
         {
             ICommand cmd = new CommandDraw(p1, shape);
             commandsDone.Push(cmd);
+        }
+
+        public void StartGroup(System.Windows.Point initPos, Shape selectRect)
+        {
+            var cmd = new CommandGroup(initPos, selectRect);
+            commandsDone.Push(cmd);
+        }
+
+        public void Group(System.Windows.Point p2)
+        {
+            var cmd = (CommandGroup)commandsDone.Pop();
+            cmd.endPosX = (int)Math.Round(p2.X);
+            cmd.endPosY = (int)Math.Round(p2.Y);
+            cmd.Execute();
+            commandsDone.Push(cmd);
+        }
+
+        public void UpdateGroup(Composite composite)
+        {
+            var cmd = new CommandUpdatedGroup(composite);
         }
 
         /// <summary>
