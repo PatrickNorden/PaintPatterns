@@ -173,6 +173,11 @@ namespace PaintPatterns
             var cmd = new CommandUpdatedGroup(composite);
         }
 
+        public void UpdateShape(Composite composite)
+        {
+            var cmd = new CommandUpdatedShape(composite);
+        }
+
         /// <summary>
         /// Return a random color
         /// </summary>

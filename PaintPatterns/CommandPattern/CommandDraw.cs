@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PaintPatterns.CompositePattern;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
@@ -37,7 +38,7 @@ namespace PaintPatterns.CommandPattern
             shape.Stroke = shape.Fill = CommandInvoker.RandColor();
             shape.StrokeThickness = 3;
             invoker.MainWindow.Canvas.Children.Add(shape);
-            invoker.AddComposite(shape.DependencyObjectType.Name, shape, invoker.MainWindow.parent, beginP, endP);
+            invoker.MainWindow.shape = new Composite(shape.DependencyObjectType.Name, shape, invoker.MainWindow.parent, beginP, new System.Windows.Point(0,0));
         }
 
         /// <summary>
@@ -74,8 +75,8 @@ namespace PaintPatterns.CommandPattern
             invoker.MainWindow.SetCanvasOffset(pos, shape);
             shape.Width = w;
             shape.Height = h;
-            this.endP = new System.Windows.Point(x, y);
-
+            this.endP = new System.Windows.Point(x2, y2);
+            invoker.MainWindow.shape.SetPos(beginP, endP);
         }
 
         /// <summary>

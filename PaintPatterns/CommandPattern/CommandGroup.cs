@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace PaintPatterns.CommandPattern
 {
@@ -48,8 +49,7 @@ namespace PaintPatterns.CommandPattern
             invoker.MainWindow.SetCanvasOffset(pos, shape);
             shape.Width = w;
             shape.Height = h;
-            System.Windows.Point endP = new System.Windows.Point(x, y);
-            invoker.MainWindow.selectBox.SetPos(initialPos, endP);
+            invoker.MainWindow.selectBox.SetPos(initialPos, new System.Windows.Point(endPosX, endPosY));
         }
 
         public void Redo()

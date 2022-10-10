@@ -18,6 +18,7 @@ namespace PaintPatterns
         public bool mouseButtonHeld;
         public Shape selected;
         public Composite root = new Composite("root", null, null, new System.Windows.Point(0,0), new System.Windows.Point(0,0));
+        public Composite shape;
         public Component parent;
         public Composite selectBox;
         public List<Composite> groups = new List<Composite>();
@@ -76,6 +77,10 @@ namespace PaintPatterns
             if(currentAction == "group")
             {
                 invoker.UpdateGroup(root);
+            }
+            if(currentAction == "ellipse" || currentAction == "rectangle")
+            {
+                invoker.UpdateShape(shape);
             }
         }
 

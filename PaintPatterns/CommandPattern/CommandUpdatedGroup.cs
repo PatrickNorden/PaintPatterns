@@ -16,7 +16,6 @@ namespace PaintPatterns.CommandPattern
             this.composite = composite;
             this.invoker = CommandInvoker.GetInstance();
             GetComponents(composite);
-
         }
 
         private void GetComponents(Component component)
@@ -27,12 +26,13 @@ namespace PaintPatterns.CommandPattern
                 {
                     GetComponents(instance);
                 }
-                if (true)
+                if (instance.GetBeginPos().X >= invoker.MainWindow.selectBox.GetBeginPos().X && instance.GetEndPos().X <= invoker.MainWindow.selectBox.GetEndPos().X && instance.GetBeginPos().Y >= invoker.MainWindow.selectBox.GetBeginPos().Y && instance.GetEndPos().Y <= invoker.MainWindow.selectBox.GetEndPos().Y)
                 {
                     invoker.MainWindow.selectBox.AddChild(instance);
                 }
             }
             invoker.MainWindow.selectBox.Display(0);
+            invoker.MainWindow.selectBox.ClearShape();
         }
         public void Execute()
         {

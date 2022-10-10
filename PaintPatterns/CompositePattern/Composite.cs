@@ -9,12 +9,14 @@ namespace PaintPatterns.CompositePattern
     {
         List<Component> children = new List<Component>();
         System.Windows.Point initP, endP;
+        Shape shape;
 
         public Composite(string name, Shape shape, Component parent, System.Windows.Point initP, System.Windows.Point endP)
             : base(name, shape, parent, initP, endP)
         {
             this.initP = initP;
             this.endP = endP;
+            this.shape = shape;
         }
 
         public override void AddChild(Component component)
@@ -61,6 +63,11 @@ namespace PaintPatterns.CompositePattern
         public override System.Windows.Point GetEndPos()
         {
             return this.endP;
+        }
+
+        public override void ClearShape()
+        {
+            this.shape.Stroke = System.Windows.Media.Brushes.Transparent;            
         }
 
         /// <summary>

@@ -37,10 +37,13 @@ namespace PaintPatterns.CompositePattern
         public abstract void Clear();
         public abstract void Display(int depth);
 
+        public abstract void ClearShape();
+
         public abstract void SetPos(System.Windows.Point initP, System.Windows.Point endP);
 
         public abstract System.Windows.Point GetBeginPos();
 
         public abstract System.Windows.Point GetEndPos();
+
     }
 }
