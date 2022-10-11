@@ -17,15 +17,16 @@ namespace PaintPatterns.CompositePattern
         protected Component parent;
         protected System.Windows.Point initP, endP;
 
-        public Component(string name, Shape shape, Component parent, System.Windows.Point initP, System.Windows.Point endP)
+        public Component()
         {
-            this.name = name;
-            this.shape = shape;
-            this.parent = parent;
-            this.initP = initP;
-            this.endP = endP;
         }
 
+        public abstract void setName(string name);
+
+        public abstract void setShape(Shape shape);
+        public abstract void setParent(Component parent);
+        public abstract void setInitP(System.Windows.Point point);
+        public abstract void setEndP(System.Windows.Point point);
         public abstract void AddChild(Component c);
         public abstract void RemoveChild(Component c);
 

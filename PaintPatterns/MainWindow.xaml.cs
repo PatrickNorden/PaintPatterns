@@ -17,7 +17,7 @@ namespace PaintPatterns
         public Point initialPosition;
         public bool mouseButtonHeld;
         public Shape selected;
-        public Composite root = new Composite("root", null, null, new System.Windows.Point(0,0), new System.Windows.Point(0,0));
+        public Composite root = new Composite();
         public Composite shape;
         public Component parent;
         public Composite selectBox;
@@ -31,7 +31,9 @@ namespace PaintPatterns
         {
             invoker = CommandInvoker.GetInstance();
             invoker.MainWindow = this;
+            root.setName("root");
             parent = root;
+            
         }
 
         #region Mouse button handling

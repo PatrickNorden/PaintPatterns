@@ -38,7 +38,11 @@ namespace PaintPatterns.CommandPattern
             shape.Stroke = shape.Fill = CommandInvoker.RandColor();
             shape.StrokeThickness = 3;
             invoker.MainWindow.Canvas.Children.Add(shape);
-            invoker.MainWindow.shape = new Composite(shape.DependencyObjectType.Name, shape, invoker.MainWindow.parent, beginP, new System.Windows.Point(0,0));
+            invoker.MainWindow.shape = new Composite();
+            invoker.MainWindow.shape.setName(shape.DependencyObjectType.Name);
+            invoker.MainWindow.shape.setShape(shape);
+            invoker.MainWindow.shape.setParent(invoker.MainWindow.parent);
+            invoker.MainWindow.shape.setInitP(beginP);
         }
 
         /// <summary>

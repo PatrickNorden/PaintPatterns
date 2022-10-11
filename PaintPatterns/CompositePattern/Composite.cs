@@ -8,16 +8,35 @@ namespace PaintPatterns.CompositePattern
 {
     public class Composite : Component
     {
-        List<Component> children = new List<Component>();
-        System.Windows.Point initP, endP;
-        Shape shape;
+        private List<Component> children = new List<Component>();
+        private System.Windows.Point initP, endP;
+        private Shape shape;
+        private string name;
+        private Component parent;
 
-        public Composite(string name, Shape shape, Component parent, System.Windows.Point initP, System.Windows.Point endP)
-            : base(name, shape, parent, initP, endP)
+        public override void setName(string name)
         {
-            this.initP = initP;
-            this.endP = endP;
+            this.name = name;
+        }
+
+        public override void setShape(Shape shape)
+        {
             this.shape = shape;
+        }
+
+        public override void setParent(Component parent)
+        {
+            this.parent = parent;
+        }
+
+        public override void setInitP(System.Windows.Point point)
+        {
+            this.initP = point;
+        }
+
+        public override void setEndP(System.Windows.Point point)
+        {
+            this.endP = point;
         }
 
         public override void AddChild(Component component)

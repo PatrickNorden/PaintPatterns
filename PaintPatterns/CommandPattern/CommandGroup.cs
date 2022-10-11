@@ -34,7 +34,11 @@ namespace PaintPatterns.CommandPattern
             shape.Fill = System.Windows.Media.Brushes.Transparent;
             shape.Stroke = System.Windows.Media.Brushes.Black;
             invoker.MainWindow.Canvas.Children.Add(shape);
-            invoker.MainWindow.selectBox = new Composite("group", shape, null, this.initialPos, new System.Windows.Point(0,0));
+            invoker.MainWindow.selectBox = new Composite();
+            invoker.MainWindow.selectBox.setName("group");
+            invoker.MainWindow.selectBox.setShape(shape);
+            invoker.MainWindow.selectBox.setInitP(this.initialPos);
+            invoker.MainWindow.selectBox.setEndP(new System.Windows.Point(0, 0));
         }
 
         public void Execute()

@@ -42,7 +42,12 @@ namespace PaintPatterns.CommandPattern
         {
             if(parent != null)
             {
-                newShape = new Composite(name, shape, parent, beginP, endP);
+                newShape = new Composite();
+                newShape.setName(name);
+                newShape.setShape(shape);
+                newShape.setParent(parent);
+                newShape.setInitP(beginP);
+                newShape.setEndP(endP);
                 parent.AddChild(newShape);
             }
         }
