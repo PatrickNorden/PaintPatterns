@@ -197,5 +197,11 @@ namespace PaintPatterns
 
             return result;
         }
+
+        public void Export()
+        {
+            var cmd = new CommandExport();
+            cmd.Execute();
+        }
     }
 }
