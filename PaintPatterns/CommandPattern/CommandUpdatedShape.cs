@@ -22,7 +22,7 @@ namespace PaintPatterns.CommandPattern
                 child.GetShape().Stroke = System.Windows.Media.Brushes.PeachPuff;
                 child.GetShape().StrokeThickness = 5;
             }
-            invoker.MainWindow.groups.Add(composite);
+            invoker.MainWindow.shapes.Add(composite);
             
         }
         public void Execute()

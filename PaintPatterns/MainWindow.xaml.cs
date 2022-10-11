@@ -22,6 +22,7 @@ namespace PaintPatterns
         public Component parent;
         public Composite selectBox;
         public List<Composite> groups = new List<Composite>();
+        public List<Composite> shapes = new List<Composite>();
 
 
         private readonly CommandInvoker invoker;
@@ -39,7 +40,8 @@ namespace PaintPatterns
         /// Register that the mousebutton is being held
         /// set the initial position to the position that has been clicked
         /// if the current action is a rectangle start drawing a rectangle
-        /// if hte currenct aciton is parent start the parent selection proces.
+        /// if the currenct action is parent start the parent selection proces.
+        /// if the current action is group start the grouping proces.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -67,6 +69,8 @@ namespace PaintPatterns
 
         /// <summary>
         /// Register when the mouse button is not being pressed 
+        /// after grouping update the shapes into this group
+        /// after drawing update the shapes with their information
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -88,6 +92,7 @@ namespace PaintPatterns
         /// When the mouse is moving, check if the mouse is being held
         /// If the current action is drawing a shape, draw this shape
         /// If the current action is selecting, Move the shape
+        /// If the current action is group, draw a selectbox in the screen
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

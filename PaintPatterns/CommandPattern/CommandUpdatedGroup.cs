@@ -33,6 +33,7 @@ namespace PaintPatterns.CommandPattern
             }
             invoker.MainWindow.selectBox.Display(0);
             invoker.MainWindow.selectBox.ClearShape();
+            invoker.MainWindow.groups.Add(invoker.MainWindow.selectBox);
         }
         public void Execute()
         {
