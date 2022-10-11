@@ -8,11 +8,13 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Shapes;
 using PaintPatterns.CompositePattern;
+using PaintPatterns.StrategyPattern;
 
 namespace PaintPatterns
 {
     public partial class MainWindow : Window
     {
+        private IStrategy strategy;
         public string currentAction = "select";
         public Point initialPosition;
         public bool mouseButtonHeld;
@@ -23,6 +25,7 @@ namespace PaintPatterns
         public Composite selectBox;
         public List<Composite> groups = new List<Composite>();
         public List<Composite> shapes = new List<Composite>();
+
 
 
         private readonly CommandInvoker invoker;
@@ -51,11 +54,15 @@ namespace PaintPatterns
             initialPosition = e.GetPosition(Canvas);
             if (currentAction == "rectangle")
             {
-                invoker.StartDraw(initialPosition, new Rectangle());
+                strategy = new RectangleStrategy();
+                strategy.Execute();
+                //invoker.StartDraw(initialPosition, new Rectangle());
             }
             else if (currentAction == "ellipse")
             {
-                invoker.StartDraw(initialPosition, new Ellipse());
+                strategy = new EllipseStrategy();
+                strategy.Execute();
+                //invoker.StartDraw(initialPosition, new Ellipse());
             }
             else if (currentAction == "parent")
             {
