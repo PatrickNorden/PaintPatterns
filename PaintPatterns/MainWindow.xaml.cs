@@ -107,7 +107,7 @@ namespace PaintPatterns
                     break;
                 case "select":
                     if (selected != null)
-                    {
+                    {                        
                         invoker.Move(e);
                     }
                     break;
@@ -224,5 +224,9 @@ namespace PaintPatterns
             Canvas.SetTop(shape, offset.Y);
         }
 
+        private void exportBtn_Click(object sender, RoutedEventArgs e)
+        {
+            invoker.Export();
+        }
     }
 }

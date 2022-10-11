@@ -6,6 +6,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Shapes;
+using PaintPatterns.VisitorPattern;
 
 namespace PaintPatterns.CompositePattern
 {
@@ -39,11 +40,12 @@ namespace PaintPatterns.CompositePattern
 
         public abstract void ClearShape();
 
+        public abstract void Accept(IVisitor v);
+
         public abstract void SetPos(System.Windows.Point initP, System.Windows.Point endP);
 
         public abstract System.Windows.Point GetBeginPos();
 
         public abstract System.Windows.Point GetEndPos();
-
     }
 }

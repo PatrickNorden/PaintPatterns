@@ -34,7 +34,10 @@
                 HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="13" Margin="0,0,10,796"
                 />
         <Button Width="100" Height="50" x:Name="group" Content="Group" Click="group_Click"  
-                HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="13" Margin="0,0,10,427"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="13" Margin="0,0,10,407"
+                />
+        <Button Width="100" Height="50" x:Name="export" Content="Export" Click="exportBtn_Click"  
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="13" Margin="0,0,10,323"
                 />
         <ListBox x:Name="components" Background="LightBlue" Margin="0,0,1715,0"></ListBox>
     </Grid>

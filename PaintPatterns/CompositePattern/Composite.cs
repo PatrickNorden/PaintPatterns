@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PaintPatterns.VisitorPattern;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Shapes;
@@ -82,6 +83,11 @@ namespace PaintPatterns.CompositePattern
             {
                 component.Display(depth + 2);
             }
+        }
+
+        public override void Accept(IVisitor v)
+        {
+            v.VisitComposite(this);
         }
     }
 }
